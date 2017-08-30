@@ -14,20 +14,20 @@ import random
 switch_gpio = 21
 
 # arecord -l で表示されたマイクのカード番号とデバイス番号
-mic_card = 1
+mic_card = { your mic card }
 mic_device = 0
 # aplay -l で表示されたスピーカーのカード番号とデバイス番号
-speaker_card = 2
+speaker_card = { your speaker card }
 speaker_device = 0
 
 # LUISのAPP ID
-luis_appid = '9bfb9012-b951-4669-bacd-b2c8e49f4539'
+luis_appid = '{ your luis app id }'
 # LUISのAPI KEY
-luis_apikey = '1134af582c204bf095c9308a8b9de293'
+luis_apikey = '{ your luis api key }'
 # Bing Speech の API KEY
-bing_speech_apikey = '1a58110f6dd04806b33848ca54246a67'
+bing_speech_apikey = '{ your bing speech api key }'
 # Bing Search の API KEY
-bing_search_apikey = 'aa353e7e63cb495f8748ca78b75aeac5'
+bing_search_apikey = '{ your bing search api key }'
 # このサイト(http://weather.livedoor.com/forecast/rss/primary_area.xml)から得られる
 # 天気情報を表示するCITY ID
 weather_city_id = 220040
