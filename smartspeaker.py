@@ -43,6 +43,7 @@ def start():
         # GPIOの入力がHIGHになるまで処理を止める
         GPIO.wait_for_edge(switch_gpio, GPIO.RISING)
         try:
+            # 音楽の再生を止める。音楽がなってない場合はFalseとなる
             if stop_youtube():
                 continue
 
