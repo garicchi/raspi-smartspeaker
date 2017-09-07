@@ -35,7 +35,7 @@ bing_search_apikey = '{ your bing video search api key }'
 # エントリポイント
 def start():
     GPIO.setmode(GPIO.BCM)
-    GPIO.setup(switch_gpio, GPIO.IN)
+    GPIO.setup(switch_gpio, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
     speech('起動しました。ボタンを押してご用件を発話してください')
     while True:
