@@ -1,4 +1,55 @@
-# raspi-smartspeaker
+# ラズパイで実現するAIスピーカー
+
+## 日経Linux読者の方へ
+日経Linux11月号で必要なコードは```smartspeaker.py```の以下の部分となります
+
+```py
+# 音楽を再生する子プロセス
+music_proc = None
+# Bing Search APIを利用して検索したyoutube動画を再生する
+def play_youtube(entities):
+    global music_proc
+    word = [x[1] for x in entities]
+    word = ''.join(word)
+    # エンティティに何も入っていなかった時のデフォルトの検索ワード
+    if len(entities) == 0:
+        word = '音楽'
+    # music videoをつけて検索をすると音楽がヒットしやすい
+    word += ' music video'
+
+    # Bing Video Search APIで動画を検索
+    word = parse.quote(word)
+    url = 'https://api.cognitive.microsoft.com/bing/v5.0/videos/search?q=%s' % word
+    url += '&mkt=ja-jp'
+
+    req = request.Request(url)
+    req.add_header('Ocp-Apim-Subscription-Key', bing_search_apikey)
+    with request.urlopen(req) as res:
+        result = res.read().decode('utf-8')
+        result = json.loads(result)
+
+    # 検索結果からyoutubeのビデオのみを抽出し、シャッフル。1番目を再生
+    videos = [(x['name'],x['contentUrl']) for x in result['value'] if x['contentUrl'].count('youtube.com') > 0]
+    random.shuffle(videos)
+    speech('%s を再生します' % videos[0][0])
+    cmd = 'youtube-dl "%s" -o - | mplayer -ao alsa:device=plughw=%d.%d - -novideo' \
+              % (videos[0][1],speaker_card, speaker_device)
+    music_proc = Popen(cmd, shell=True, preexec_fn=os.setsid)
+
+# 音楽の再生を止める
+# 音楽が再生されていなかったときはFalseがreturnされる
+def stop_youtube():
+    global music_proc
+    # 現在音楽を再生中なら
+    if music_proc and not music_proc.poll():
+        # 音楽の再生をとめる
+        os.killpg(os.getpgid(music_proc.pid), signal.SIGKILL)
+        speech('音楽の再生を停止しました')
+        music_proc = None
+        return True
+    else:
+        return False
+```
 
 ## require
 - raspberry pi (Raspbian)
