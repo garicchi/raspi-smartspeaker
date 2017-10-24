@@ -1,7 +1,7 @@
 # ラズパイで実現するAIスピーカー
 
-## 日経Linux読者の方へ
-日経Linux11月号で必要なコードは```smartspeaker.py```の以下の部分となります
+## 日経Linux及びラズパイマガジン読者の方へ
+日経Linux11月号およびラズパイマガジン12月号の音楽再生の部分で必要なコードは```smartspeaker.py```の以下の部分となります
 
 ```py
 # 音楽を再生する子プロセス
@@ -50,6 +50,8 @@ def stop_youtube():
     else:
         return False
 ```
+
+また、ソースコード全体としては```smartspeaker.py```に載っているのでご参照ください。
 
 ## require
 - raspberry pi (Raspbian)
