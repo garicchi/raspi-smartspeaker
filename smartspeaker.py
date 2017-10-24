@@ -10,7 +10,6 @@ from datetime import datetime
 from pytz import timezone
 from luis_sdk import LUISClient
 import random
-import pprint
 
 # 回路でスイッチと繋いだGPIOのピン番号
 switch_gpio = 21
