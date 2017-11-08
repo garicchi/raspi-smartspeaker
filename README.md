@@ -1,5 +1,12 @@
 # ラズパイで実現するAIスピーカー
 
+## LUISパブリッシュアップデートについて
+(2017/11/8)LUISのパブリッシュ時のUIがアップデートされました。
+LUISパブリッシュ時はPublish to production slotボタンを押し、
+LUISのAPIキーはResources and Keysにある Key Stringをコピーしてください。
+
+![publish](./publish.png)
+
 ## 日経Linux及びラズパイマガジン読者の方へ
 日経Linux11月号およびラズパイマガジン12月号の音楽再生の部分で必要なコードは```smartspeaker.py```の以下の部分となります
 
