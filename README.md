@@ -53,6 +53,12 @@ def stop_youtube():
 
 また、ソースコード全体としては```smartspeaker.py```に載っているのでご参照ください。
 
+## no module named RPiとエラーが出た方
+root権限で実行してみてください
+```sh
+sudo python3 smartspeaker.py
+```
+
 ## require
 - raspberry pi (Raspbian)
 - Bing Speech API Key
